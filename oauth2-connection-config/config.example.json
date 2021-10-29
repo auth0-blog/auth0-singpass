@@ -1,0 +1,18 @@
+{
+    "options": {
+      "scope": "openid",
+      "scripts": {
+        "fetchUserProfile": "function fetchUserProfile(access_token, ctx, callback) {\r\n\r\n    const { id_token, payload } = ctx;\r\n\r\n    if (!id_token || !payload) {\r\n        return callback('[singpass_auth_failure] ID token \/ Payload is missing.');\r\n    }\r\n\r\n    if (payload) {\r\n        const profile = {\r\n            user_id: payload.sub,\r\n        };\r\n        return callback(null, profile);\r\n    }\r\n}\r\n"
+      },
+      "tokenURL": "https://{WEBTASK_URL}/{WEBTASK_NAME}/singpass/token",
+      "client_id": "{CLIENT_ID}",
+      "client_secret": "{CLIENT_SECRET}",
+      "authorizationURL": "{AUTHORIZE_URL}",
+      "pkce_enabled": true
+    },
+    "strategy": "oauth2",
+    "name": "{CONNECTION_NAME}",
+    "is_domain_connection": false,
+    "enabled_clients": [
+    ]
+  }

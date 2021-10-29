@@ -1,0 +1,24 @@
+lambda_version = "0.1.0"
+lambda_bucket = "singpass-lambda-dev-bucket-name"
+
+auth0_domain = "TENANT.auth0.com"
+auth0_tf_client_id = "XXXX"
+auth0_tf_client_secret = "XXX"
+auth0_custom_domain = "example.com"
+
+private_key = <<-EOT
+{
+  "kty": "EC",
+  "d": "XXXX",
+  "use": "sig",
+  "crv": "P-256",
+  "kid": "XXXX",
+  "x": "XXX",
+  "y": "XXX",
+  "alg": "ES256"
+}
+EOT
+
+# singpass
+singpass_client_id = "xxxx"
+

@@ -1,0 +1,27 @@
+auth0_domain = "TENANT.auth0.com"
+auth0_tf_client_id = "XXX"
+auth0_tf_client_secret = "XXX"
+auth0_custom_domain = "example.com"
+
+private_key = <<-EOT
+{
+  "kty": "EC",
+  "d": "XXXX",
+  "use": "sig",
+  "crv": "P-256",
+  "kid": "XXXX",
+  "x": "XXX",
+  "y": "XXX",
+  "alg": "ES256"
+}
+EOT
+
+# singpass
+singpass_client_id = "XXXX"
+
+
+## cloudflare
+cloudflare_email = "XXX"
+cloudflare_account_id = "XXX"
+cloudflare_api_key = "XXX"
+cloudflare_zone_id = "XXX"

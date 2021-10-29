@@ -1,0 +1,12 @@
+graph.*
+*.auto.tfvars
+.terraform.lock.hcl
+.terraform
+*-certificate.pem
+*.plan
+*.log
+terraform
+.graphqlconfig
+terraform.tfstate
+terraform.tfstate.backup
+.terraform.tfstate.lock.info

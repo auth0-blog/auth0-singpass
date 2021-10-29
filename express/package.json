@@ -1,0 +1,25 @@
+{
+    "name": "auth0-singpass-proxy-express",
+    "version": "1.0.0",
+    "description": "Token endpoint for client assertion exchange with express.js",
+    "main": "server.js",
+    "scripts": {
+        "start": "node index.js"
+    },
+    "keywords": [
+        "auth0",
+        "client-assertion",
+        "singpass",
+        "private_key_jwt"
+    ],
+    "author": "vikasjayaram",
+    "license": "LGPL",
+    "dependencies": {
+        "axios": "^0.21.1",
+        "body-parser": "~1.18.2",
+        "dotenv": "^10.0.0",
+        "express": "~4.16.2",
+        "jose": "^3.15.4",
+        "uuid": "^8.3.2"
+    }
+}
