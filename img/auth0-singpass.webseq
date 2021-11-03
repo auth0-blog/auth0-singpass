@@ -1,0 +1,55 @@
+title SingPass - UL QR Login
+
+actor User as u
+participant Application as app
+participant Auth0 as a0
+participant Proxy Endpoint as p
+participant Singpass API as singpass
+
+
+u -> + app: Protected resource
+app -> + a0: 302 redirect /authorize? { app_client_id,\n connection=singpass, state=s1, nonce=n1 }
+
+a0 -> + p: 302 GET /authorize? { client_id=comp_app_client_id,\n state=s1-internal, code_challenge=cc }
+
+p -> - a0: 302 GET /authorize { client_id=comp_app_client_id, \n ndi_state=s1-internal, ndi_nonce=cc }
+
+a0 -> a0: window.NDI.initAuthSession {}
+
+a0 -> +singpass: JS XHR /auth { singpass_client_id, state=s1-internal, nonce=cc }
+singpass --> - a0: JSON { QR code }
+
+
+a0 --> - u: Display QR code
+
+a0 <--> singpass: Websocket
+
+u -> + a0: Scan QR code & approve sign-in
+
+
+a0 -> a0: 302 /login/callback { code=c1, state=s1-internal }
+
+a0 -> + p: POST /token { c1, comp_app_client_id, comp_app_client_secret, code_verifier, redirect_uri }
+p -> p: Validate { client_id/secret combination }
+p -> p: Sign client_assertion JWS { singpass_client_id, exp, ES256 private_key }
+
+p -> + singpass: POST /token { code=c1, client_assertion, redirect_uri }
+singpass --> -p: id_token { sub=UUID, alg=ES256, nonce }
+
+p -> p: verify id_token
+
+p -> p: validate sha256(code_verifier) === nonce
+
+p --> - a0: id_token
+
+a0 -> a0: fetchUserProfile.js \n { verify id_token and extract sub }
+
+a0 -> - app: /callback { code=c2, state=s1 }
+
+a0 <-> app: Exchange authorization code
+
+app -> app: validate { nonce=n1 }
+
+app --> - u: Resource
+
+

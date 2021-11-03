@@ -50,7 +50,7 @@
         var language;
 
         if (config.dict && config.dict.signin && config.dict.signin.title) {
-            languageDictionary = {title: config.dict.signin.title};
+            languageDictionary = {title: config.dict.signin.title, loginWithLabel: 'Log in with %s'};
         } else if (typeof config.dict === 'string') {
             language = config.dict;
         }
@@ -91,7 +91,7 @@
                         foregroundColor: "#FFFFFF",
                         icon: "https://app.singpass.gov.sg/apple-touch-icon.png"
                     },
-                    "Singpass-STG-CF": {
+                    "SingPass-STG-CF": {
                         displayName: "Singpass",
                         primaryColor: "#cf0b15",
                         foregroundColor: "#FFFFFF",

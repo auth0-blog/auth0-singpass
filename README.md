@@ -3,11 +3,10 @@ Companion source code for [Auth0 Singpass Integration blog post](https://auth0.c
 
 
 # Sequence Diagram
-![Sequence Diagram](https://www.websequencediagrams.com/files/render?link=c6XmaXV8DBb97kQEb34fO3jDqJ2ZpVwIdm0hCdfbKwA0kYuCvIhCqjRemxTaerGa)
-
+![Sequence Diagram](/img/auth0-singpass.png?raw=true "Sequence Diagram")
 
 # Setup
-> Note: after creating connection, enable [PKCE](#EnablePKCEonConnection). 
+> Note: after creating connection, enable [PKCE](#enable-pkce-on-connection). 
 
 ## Cloudflare
 ```bash

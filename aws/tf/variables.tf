@@ -44,12 +44,6 @@ variable "singpass_client_id" {
   description = "singpass client_id"
 }
 
-variable "singpass_client_secret" {
-  type = string
-  description = "singpass client_secret"
-  sensitive = true
-}
-
 variable "singpass_authorization_endpoint" {
   type = string
   description = "singpass authorization endpoint"
